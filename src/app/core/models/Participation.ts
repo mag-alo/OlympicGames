@@ -1,43 +1,7 @@
-// TODO: create here a typescript interface for a participation
-/*
-example of participation:
-{
-    id: 1,
-    year: 2012,
-    city: "Londres",
-    medalsCount: 28,
-    athleteCount: 372
+export interface Participation{
+    id: number;
+    year: number;
+    city: String;
+    medalsCount: number;
+    athleteCount: number;
 }
-*/
-
-//MOI :
-// extrait d'olympic.json :
-// [
-//     {
-//       "id": 1,
-//       "country": "Italy",
-//       "participations": [
-//         {
-//           "id": 1,
-//           "year": 2012,
-//           "city": "Londres",
-//           "medalsCount": 28,
-//           "athleteCount": 372
-//         },
-//         {
-//           "id": 2,
-//           "year": 2016,
-//           "city": "Rio de Janeiro",
-//           "medalsCount": 28,
-//           "athleteCount": 375
-//         },
-//         {
-//           "id": 3,
-//           "year": 2020,
-//           "city": "Tokyo",
-//           "medalsCount": 40,
-//           "athleteCount": 381
-//         }
-//       ]
-//     },
-//\MOI
