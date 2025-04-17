@@ -1,0 +1,12 @@
+<div class="center">
+  <h2>Details</h2>
+  <hr />
+
+  <button (click)="onButtonClick(1)">Afficher le détail de l'Italie</button>
+  <button (click)="onButtonClick(2)">Afficher le détail de l'Espagne</button>
+  <button (click)="onButtonClick(3)">Afficher le détail des Etats-Unis</button>
+  <button (click)="onButtonClick(4)">Afficher le détail de Germany</button>
+  <button (click)="onButtonClick(5)">Afficher le détail de France</button>
+
+  <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Go back</a>
+</div>

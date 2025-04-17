@@ -1,9 +1,10 @@
 <h2>Dashboard</h2>
 <hr />
+  
 
 <h2>Medals per country</h2>
 <ng-container *ngIf="(olympics$ | async) as olympicCountrys">
-  <h3>Number of countries : {{ (olympics$ | async)?.length }} </h3>
+  <h3>Number of countries : {{ olympicCountrys.length }} </h3>
 
   <h3>Number of JOs : 
     @for (olympicCountry of olympics$ | async ; track olympicCountry.id) {
@@ -15,6 +16,7 @@
       @if(olympicCountry.id === 3){
         {{ olympicCountry.id }} 
       }    
+
     }
   </h3>
   
@@ -30,3 +32,11 @@
     }
   </ul>
 </ng-container>
+
+<!-- <div>
+  <canvas baseChart
+          olympics$.pieChartData()
+          olympics$.pieChartOptions()
+          chartType="pie">
+  </canvas>
+</div> -->
