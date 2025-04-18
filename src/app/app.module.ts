@@ -5,10 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DetailComponent } from './pages/detail/detail.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DetailComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent, 
+    HomeComponent, 
+    DetailComponent
+  ],
+  imports: [
+    BrowserModule,
+    //NgxChartsModule,
+    BrowserAnimationsModule, 
+    AppRoutingModule, 
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
