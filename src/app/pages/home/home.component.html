@@ -2,23 +2,19 @@
   <h2>Medals per country</h2>
   <ng-container *ngIf="(olympics$ | async) as olympicCountrys">
     <h3>Number of countries : {{ olympicCountrys?.length }} </h3>
-
-    <h3>Number of JOs : 
-      @for (olympicCountry of olympics$ | async ; track olympicCountry.id) {
-        @if(olympicCountry.id === 3){
-          {{ olympicCountry.id }} 
-        }    
-      }
-    </h3>
-    
-    <ngx-charts-pie-chart
-      [results]="pieChartData"
-      [legend]="true"
-      [explodeSlices]="false"
-      [labels]="true"
-      [doughnut]="false"
-      [gradient]="false"
-      >
-    </ngx-charts-pie-chart>
+    <h3>Number of JOs : 3</h3>
   </ng-container>
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-sm-12">
+      <ngx-charts-pie-chart class="pie-label"
+        [view] = "[width, height]"
+        [results]="pieChartData"        
+        [gradient]="gradient"
+        [legend]="showLegend"
+        [doughnut]="isDoughnut"
+        [labels]="showLabels"
+        [labelFormatting]="labelFormatting">        
+      </ngx-charts-pie-chart>
+    </div>
+  </div>
 </div>
