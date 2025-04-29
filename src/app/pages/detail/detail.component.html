@@ -1,6 +1,10 @@
 <div class="center">
-  <h2>{{ olympicCountry.country }}</h2>
-  <h2>Number of entries {{ nbJO }} Total number medals {{ nbTotalMedal }} Total number of athletes {{ nbTotalAthletes }}</h2>
+  <h2 class="title">{{ olympicCountry.country }}</h2>
+  <div class="subtitle-container"> 
+    <h3 class="subtitle">Number of JOs <span class="number">{{ nbJO }}</span></h3>
+    <h3 class="subtitle">Total number medals <span class="number">{{ nbTotalMedal }}</span></h3>
+    <h3 class="subtitle">Total number athletes <span class="number">{{ nbTotalAthletes }}</span></h3>
+  </div>
   <hr />
 
   <div *ngIf="lineChartData">
@@ -22,5 +26,5 @@
       >
     </ngx-charts-line-chart>
   </div>
-  <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Go back</a>
+  <a class="go-back" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">- Back Medals per Country -</a>
 </div>

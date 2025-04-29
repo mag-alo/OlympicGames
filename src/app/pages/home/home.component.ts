@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[]> = of([]);
 
   pieChartData: PieChartData[] = [];
+  tooltipData: { name: string; value: number } | null = null;
   
   //Options for pie chart
   gradient: boolean = false;

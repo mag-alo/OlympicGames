@@ -1,22 +1,29 @@
 <div class="center">
-  <h2>Medals per country</h2>
+  <div class="title">Medals per Country</div>
   <ng-container *ngIf="(olympics$ | async) as olympicCountrys">
-    <h3>Number of countries : {{ olympicCountrys?.length }} </h3>
-    <h3>Number of JOs : 3</h3>
+    <div class="subtitle-container">    
+       <h3 class="subtitle">
+          Number of JOs
+          <span class="number">3</span>
+        </h3>
+        <h3 class="subtitle">Number of countries 
+          <span class="number">{{ olympicCountrys?.length }}</span>
+        </h3>
+    </div>
   </ng-container>
   <div class="row justify-content-center">
     <div class="col-md-6 col-sm-12">
-      <ngx-charts-pie-chart class="pie-label"
-        [view] = "[width, height]"
-        [results]="pieChartData"        
-        [gradient]="gradient"
-        [legend]="showLegend"
-        [doughnut]="isDoughnut"
-        [labels]="showLabels"
-        [labelFormatting]="labelFormatting"
-        (select)="onSelect($event)"
-        >        
-      </ngx-charts-pie-chart>
+        <ngx-charts-pie-chart class="pie-label"
+          [view] = "[width, height]"
+          [results]="pieChartData"        
+          [gradient]="gradient"
+          [legend]="showLegend"
+          [doughnut]="isDoughnut"
+          [labels]="showLabels"
+          [labelFormatting]="labelFormatting"
+          (select)="onSelect($event)"
+          >        
+        </ngx-charts-pie-chart>
     </div>
   </div>
 </div>

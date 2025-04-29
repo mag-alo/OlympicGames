@@ -15,20 +15,83 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
+  padding: 0px; //20px;
 }
 
 .pie-label { 
   max-width: 600px;
-  // width: 100%;
-  // height: auto;
   display: flex;
   margin: auto;
   justify-content: center;
   align-items: center;
   flex-direction: column;  
-  font-size: 15px !important; /* Augmente la taille des labels */
-  font-weight: bold; /* Rendre les labels plus visibles */
-  fill: #080cee; /* Couleur des labels */
+  font-size: 20px !important; /* Augmente la taille des labels */
+  font-weight: normal  ; /* Rendre les labels plus visibles */
+  fill: #030303; /* Couleur des labels */
 }
 
+ngx-charts .axis-label {
+  font-size: 16px; /* Taille de la police */
+  font-weight: bold; /* Texte en gras */
+  fill: #333; /* Couleur du texte */
+}
+
+.title {
+  background-color: #0388a0d2; /* Couleur de fond */
+  color: #f8fdfd; /* Couleur du texte */
+  text-align: center; /* Centrer le texte */
+  border-radius: 15px; /* Coins arrondis (optionnel) */
+  width: 300px; /* Largeur fixe pour un carré */
+  height: 60px; /* Hauteur fixe pour un carré */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px; //auto; /* Centrer horizontalement et espacement vertical */
+  font-size: 30px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  padding: 10px; /* Espacement interne */  
+}
+
+.subtitle-container {
+  display: flex; /* Utilise Flexbox pour aligner les éléments horizontalement */
+  justify-content: center; /* Centre les sous-titres horizontalement */
+  gap: 20px; /* Espacement entre les carrés */
+  margin-top: 20px; /* Espacement au-dessus du conteneur */
+}
+
+.subtitle {
+  background-color: #fcfcfcd2; /* Couleur de fond */
+  color: #080808; /* Couleur du texte */
+  text-align: center; /* Centrer le texte */
+  border-radius: 15px; /* Coins arrondis (optionnel) */
+  width: 210px; /* Largeur fixe pour un carré */
+  height: 90px; /* Hauteur fixe pour un carré */
+  display: flex;
+  flex-direction: column; /* Force l'alignement vertical */
+  justify-content: center; /* Centre verticalement */
+  align-items: center; /* Centre horizontalement */
+  margin: 0px; //auto; /* Centrer horizontalement et espacement vertical */
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  padding: 10px; /* Espacement interne */
+  border: 3px solid #0388a0d2; /* Bordure de 3px avec une couleur blanche */ 
+  white-space: nowrap; /* Empêche le texte de se diviser sur plusieurs lignes */
+}
+
+.subtitle .number {
+  font-size: 24px; /* Taille du chiffre */
+  font-weight: bold; /* Met le chiffre en gras */
+  margin-top: 5px; /* Espacement entre le texte et le chiffre */
+}
+
+.go-back {
+  display: block; /* Permet de gérer la position comme un bloc */
+  margin-top: 30px; /* Ajoute un espacement au-dessus pour le positionner plus bas */
+  font-size: 20px; /* Augmente la taille du texte */
+  font-weight: bold; /* Rend le texte plus gras */
+  text-align: center; /* Centre le texte horizontalement */
+  color: #0388a0; /* Couleur du texte */
+  text-decoration: none; /* Supprime le soulignement du lien */
+}
