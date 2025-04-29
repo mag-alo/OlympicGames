@@ -1,7 +1,11 @@
+//selected (in home.component) olympic country detail component
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { LineChartData } from 'src/app/core/models/LineChartData';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
 import { OlympicService } from 'src/app/core/services/olympic.service';
+import { LineChartDataService } from 'src/app/core/services/LineChartDataService';
+import { ActivatedRoute} from '@angular/router';
+import { calculateTotal } from 'src/app/core/utils/Maths-utils';
 
 @Component({
   selector: 'app-detail',
@@ -9,53 +13,49 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  public olympics$!: Observable<OlympicCountry[]>;
+  olympicCountry!: OlympicCountry;
+  lineChartData!: LineChartData;
+  nbJO: number = 0;
+  nbTotalMedal: number = 0;
+  nbTotalAthletes: number = 0;
 
-  constructor(private olympicService: OlympicService) {}
+  //Options for line chart
+  gradient: boolean = true;
+  legend: boolean = false;
+  showRefLines: boolean = true;
+  showRefLabels: boolean = true;
+  showGridLines: boolean = true;  
+  animations: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Dates';
+  yAxisLabel: string = 'Medals Count';
+  timeline: boolean = false;
+  width: number = window.innerWidth / 2; // Ajustez le diviseur selon vos besoins
+  height: number = 400; 
+
+  constructor(
+    private olympicService: OlympicService,
+    private lineChartDataService: LineChartDataService,
+    private activatedRoute: ActivatedRoute
+  ) {}
   
   ngOnInit(): void {
-    // Charger les données initiales si nécessaire
-    // this.olympicService.loadInitialData().subscribe();
-
-    // Obtenir les données observables
-    this.olympics$ = this.olympicService.getOlympics();
-
-            // Manipuler les données
-            // this.olympics$.subscribe((data) => {
-            //   console.log(data);
-            //   // Effectuer des manipulations sur les données ici
-            // });
-
-
-  }
-  
-  // Exemple de méthode pour obtenir un pays olympique par ID
-  getOlympicCountryById(id: number): OlympicCountry | undefined {
-    let olympicCountry: OlympicCountry | undefined;
-    this.olympics$.subscribe((data) => {
-      olympicCountry = data.find((country) => country.id === id);
-    });
-    return olympicCountry;
-  }
-
-  onButtonClick(countryId: number): void {
-    const country = this.getOlympicCountryById(countryId);
-    if (country) {
-      console.log('Pays trouvé:', country);
-      // Effectuer d'autres actions avec le pays trouvé
+    const countryName = this.activatedRoute.snapshot.paramMap.get('country');
+    if (countryName) {
+     this.olympicCountry = this.olympicService.getOlympicCountryByName(countryName);
+      if (this.olympicCountry) {
+        this.lineChartData = this.lineChartDataService.transformToLineChartData(this.olympicCountry);
+        this.nbJO = this.olympicCountry.participations.length;
+        this.nbTotalMedal = calculateTotal(this.olympicCountry.participations, 'medalsCount');
+        this.nbTotalAthletes = calculateTotal(this.olympicCountry.participations, 'athleteCount');
+      } else{
+        throw new Error('Erreur du Line Chart Data.');
+      }      
     } else {
-      console.log('Pays non trouvé');
+      throw new Error('Country parameter is missing in the route.');
     }
   }
 }
-
-// export class HomeComponent implements OnInit {
-//   public olympics$: Observable<OlympicCountry[]> = of([]);
-//   public nbTotalDeMedaille: number = 0;
-  
-//   constructor(private olympicService: OlympicService) {}
-
-//   ngOnInit(): void {
-//     this.olympics$ = this.olympicService.getOlympics();
-//   }
-// }

@@ -1,3 +1,4 @@
+//Implémentation du service pour récupérer les données des pays olympiques
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -8,6 +9,7 @@ import { OlympicCountry } from '../models/OlympicCountry';
   providedIn: 'root',
 })
 export class OlympicService {
+
   private olympicUrl = './assets/mock/olympic.json';
 
   private olympics$ = new BehaviorSubject<OlympicCountry[]>([]);
@@ -30,5 +32,18 @@ export class OlympicService {
 
   getOlympics(){
     return this.olympics$.asObservable();
+  }
+
+  getOlympicCountryByName(countryName : string): OlympicCountry { 
+   // Utilisation de BehaviorSubject pour obtenir la valeur actuelle
+    const olympicCountry = this.olympics$.getValue().find(
+            (country) => country.country === countryName
+          );
+
+    if (olympicCountry) {
+      return olympicCountry;
+    } else { 
+      throw new Error(`olympic.service_Pays "${countryName}" non trouvé.`);
+    }
   }
 }

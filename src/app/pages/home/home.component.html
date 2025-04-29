@@ -13,7 +13,9 @@
         [legend]="showLegend"
         [doughnut]="isDoughnut"
         [labels]="showLabels"
-        [labelFormatting]="labelFormatting">        
+        [labelFormatting]="labelFormatting"
+        (select)="onSelect($event)"
+        >        
       </ngx-charts-pie-chart>
     </div>
   </div>

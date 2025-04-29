@@ -1,12 +1,26 @@
 <div class="center">
-  <h2>Details</h2>
+  <h2>{{ olympicCountry.country }}</h2>
+  <h2>Number of entries {{ nbJO }} Total number medals {{ nbTotalMedal }} Total number of athletes {{ nbTotalAthletes }}</h2>
   <hr />
 
-  <button (click)="onButtonClick(1)">Afficher le détail de l'Italie</button>
-  <button (click)="onButtonClick(2)">Afficher le détail de l'Espagne</button>
-  <button (click)="onButtonClick(3)">Afficher le détail des Etats-Unis</button>
-  <button (click)="onButtonClick(4)">Afficher le détail de Germany</button>
-  <button (click)="onButtonClick(5)">Afficher le détail de France</button>
-
+  <div *ngIf="lineChartData">
+    <ngx-charts-line-chart
+      [results]="[lineChartData]"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [view] = "[width, height]"
+      [showRefLabels]="showRefLabels"
+      [showRefLines]="showRefLines"
+      [showGridLines]="showGridLines"
+      [legend]="legend"
+      [gradient]="gradient"
+      >
+    </ngx-charts-line-chart>
+  </div>
   <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Go back</a>
 </div>

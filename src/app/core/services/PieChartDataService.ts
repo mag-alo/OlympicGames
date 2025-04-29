@@ -1,6 +1,8 @@
+//PieChart Implémentation, which is responsible for transforming OlympicCountry data into a format suitable for pie chart representation. 
 import { Injectable } from '@angular/core';
 import { PieChartData } from 'src/app/core/models/PieChartData';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
+import { calculateTotal } from 'src/app/core/utils/Maths-utils';
 
 @Injectable({
   providedIn: 'root',
@@ -8,15 +10,11 @@ import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
 export class PieChartDataService {
   
   transformToPieChartData(olympicCountry: OlympicCountry[]): PieChartData[] {
-    return olympicCountry.map(
-      olympicCountry => ({
-        name: olympicCountry.country as string,
-        value: olympicCountry.participations.reduce(
-          (total, participation) => total + participation.medalsCount,
-          0
-        ),
-      })
-    );
+    return olympicCountry.map(country => ({
+        name: country.country, // Nom du pays
+        value: calculateTotal(country.participations, 'medalsCount'), // Nombre total de médailles
+        id: country.id // ID du pays
+      }));
   }
   
 }
