@@ -1,12 +1,10 @@
 <div class="center">
-  <h2 class="title">{{ olympicCountry.country }}</h2>
-  <div class="subtitle-container"> 
-    <h3 class="subtitle">Number of JOs <span class="number">{{ nbJO }}</span></h3>
-    <h3 class="subtitle">Total number medals <span class="number">{{ nbTotalMedal }}</span></h3>
-    <h3 class="subtitle">Total number athletes <span class="number">{{ nbTotalAthletes }}</span></h3>
+  <div class="title">{{ olympicCountry.country }}</div>
+  <div class="d-flex justify-content-center flex-wrap gap-3 p-3">
+    <h3 class="subtitle">Number of JOs<span class="number">{{ nbJO }}</span></h3>
+    <h3 class="subtitle">Total number medals<span class="number">{{ nbTotalMedal }}</span></h3>
+    <h3 class="subtitle">Total number athletes<span class="number">{{ nbTotalAthletes }}</span></h3>
   </div>
-  <hr />
-
   <div *ngIf="lineChartData">
     <ngx-charts-line-chart
       [results]="[lineChartData]"
@@ -24,6 +22,12 @@
       [legend]="legend"
       [gradient]="gradient"
       >
+      <ng-template #tooltipTemplate let-model="model">
+        <div class="custom-tooltip">
+          <div>{{model.name}}</div>
+          <div>🏅{{model.value}}</div>
+        </div>
+      </ng-template> 
     </ngx-charts-line-chart>
   </div>
   <a class="go-back" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">- Back Medals per Country -</a>

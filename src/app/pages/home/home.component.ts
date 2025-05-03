@@ -1,4 +1,4 @@
-//global olympic countries data
+// Global olympic countries data
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
@@ -17,9 +17,8 @@ export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[]> = of([]);
 
   pieChartData: PieChartData[] = [];
-  tooltipData: { name: string; value: number } | null = null;
   
-  //Options for pie chart
+  //pie chart options
   gradient: boolean = false;
   showLegend: boolean = false;
   showLabels: boolean = true;
@@ -27,6 +26,8 @@ export class HomeComponent implements OnInit {
   labelFormatting = (texte: string): string => {
     return `${texte}`;
    };
+   width: number =  Math.max(window.innerWidth / 2, 300); // Ajustez le diviseur selon vos besoins
+   height: number = 300; // Une hauteur fixe ou dynamique
  
   constructor(
     private olympicService: OlympicService,
@@ -35,7 +36,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  
     this.olympics$ = this.olympicService.getOlympics();
   
     this.olympicService.getOlympics().subscribe((olympicCountries) => {
@@ -43,16 +43,13 @@ export class HomeComponent implements OnInit {
     });
    }
 
-   width: number = window.innerWidth / 2; // Ajustez le diviseur selon vos besoins
-   height: number = 400; // Une hauteur fixe ou dynamique
-
-   onSelect(event: any): void {
+  onSelect(event: any): void {
     this.router.navigateByUrl(`detail/${(event.name)}`);
   }
  
    @HostListener('window:resize')
    onResize(event: Event) {
-     this.width = window.innerWidth / 2; // Mettez à jour la largeur lors du redimensionnement
+    this.width = Math.max(window.innerWidth / 2, 300); // Met à jour la largeur lors du redimensionnement
    }
  
 }

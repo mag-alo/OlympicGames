@@ -15,7 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 0px; //20px;
+  //padding: 0px; //20px;
 }
 
 .pie-label { 
@@ -30,10 +30,17 @@ body {
   fill: #030303; /* Couleur des labels */
 }
 
-ngx-charts .axis-label {
-  font-size: 16px; /* Taille de la police */
-  font-weight: bold; /* Texte en gras */
-  fill: #333; /* Couleur du texte */
+.custom-tooltip {
+  background: #0388a0d2;
+  color: white;
+  font-size: 17px;
+  padding: 10px;
+  border-radius: 15px;
+  display: block;
+  margin-bottom: 0px; 
+  margin-top: 0px; 
+  margin-left: -10px;
+  margin-right: -10px;
 }
 
 .title {
@@ -49,15 +56,8 @@ ngx-charts .axis-label {
   margin: 0px; //auto; /* Centrer horizontalement et espacement vertical */
   font-size: 30px;
   font-weight: normal;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   padding: 10px; /* Espacement interne */  
-}
-
-.subtitle-container {
-  display: flex; /* Utilise Flexbox pour aligner les éléments horizontalement */
-  justify-content: center; /* Centre les sous-titres horizontalement */
-  gap: 20px; /* Espacement entre les carrés */
-  margin-top: 20px; /* Espacement au-dessus du conteneur */
 }
 
 .subtitle {
@@ -74,7 +74,7 @@ ngx-charts .axis-label {
   margin: 0px; //auto; /* Centrer horizontalement et espacement vertical */
   font-size: 20px;
   font-weight: normal;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   padding: 10px; /* Espacement interne */
   border: 3px solid #0388a0d2; /* Bordure de 3px avec une couleur blanche */ 
   white-space: nowrap; /* Empêche le texte de se diviser sur plusieurs lignes */

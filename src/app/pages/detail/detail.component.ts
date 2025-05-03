@@ -1,11 +1,12 @@
-//selected (in home.component) olympic country detail component
-import { Component, OnInit } from '@angular/core';
+// Selected olympic country (in home.component) detail component
+import { Component, HostListener, OnInit } from '@angular/core';
 import { LineChartData } from 'src/app/core/models/LineChartData';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { LineChartDataService } from 'src/app/core/services/LineChartDataService';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { calculateTotal } from 'src/app/core/utils/Maths-utils';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 @Component({
   selector: 'app-detail',
@@ -19,7 +20,7 @@ export class DetailComponent implements OnInit {
   nbTotalMedal: number = 0;
   nbTotalAthletes: number = 0;
 
-  //Options for line chart
+  // line chart Options
   gradient: boolean = true;
   legend: boolean = false;
   showRefLines: boolean = true;
@@ -33,19 +34,20 @@ export class DetailComponent implements OnInit {
   xAxisLabel: string = 'Dates';
   yAxisLabel: string = 'Medals Count';
   timeline: boolean = false;
-  width: number = window.innerWidth / 2; // Ajustez le diviseur selon vos besoins
-  height: number = 400; 
+  width: number =  Math.max(window.innerWidth / 2, 300); // Ajustez le diviseur selon vos besoins
+  height: number = 400; // Une hauteur fixe ou dynamique
 
   constructor(
     private olympicService: OlympicService,
     private lineChartDataService: LineChartDataService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router, // Uncomment if you need to navigate to NotFoundComponent
   ) {}
   
   ngOnInit(): void {
     const countryName = this.activatedRoute.snapshot.paramMap.get('country');
-    if (countryName) {
-     this.olympicCountry = this.olympicService.getOlympicCountryByName(countryName);
+    if (countryName) {    
+      this.olympicCountry = this.olympicService.getOlympicCountryByName(countryName);
       if (this.olympicCountry) {
         this.lineChartData = this.lineChartDataService.transformToLineChartData(this.olympicCountry);
         this.nbJO = this.olympicCountry.participations.length;
@@ -56,6 +58,12 @@ export class DetailComponent implements OnInit {
       }      
     } else {
       throw new Error('Country parameter is missing in the route.');
+      this.router.navigate(['/not-found']);
     }
+  }
+
+  @HostListener('window:resize')
+  onResize(event: Event) {
+    this.width = Math.max(window.innerWidth / 2, 300); // Met à jour la largeur lors du redimensionnement
   }
 }
