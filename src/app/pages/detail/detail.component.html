@@ -23,11 +23,13 @@
       [gradient]="gradient"
       >
       <ng-template #tooltipTemplate let-model="model">
-        <div class="custom-tooltip">
-          <div>{{model.name}}</div>
-          <div>🏅{{model.value}}</div>
-        </div>
+        <div>{{model.name}}</div>
+        <div>🏅{{model.value}}</div>
       </ng-template> 
+      <ng-template #seriesTooltipTemplate let-model="model">
+        <div>{{model[0].name}}</div>
+        <div>🏅{{model[0].value}}</div>        
+      </ng-template>       
     </ngx-charts-line-chart>
   </div>
   <a class="go-back" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">- Back Medals per Country -</a>

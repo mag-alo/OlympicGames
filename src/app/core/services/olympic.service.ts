@@ -1,7 +1,7 @@
-// Olympic service implementation to get './assets/mock/olympic.json' data using observable
+// Olympic service implementation to get './assets/mock/olympic.json' data using Observable
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/OlympicCountry';
 
@@ -19,12 +19,9 @@ export class OlympicService {
     return this.http.get<OlympicCountry[]>(this.olympicUrl).pipe(
       tap((value) => this.olympics$.next(value)),
 
-      catchError((error, caught) => {
-        // TODO: improve error handling
-        console.error('error', error);
-        // can be useful to end loading state and let the user know something went wrong
-        this.olympics$.unsubscribe();
-        return caught;
+      catchError((error) => {
+        this.olympics$.next([]);
+        return throwError(() => new Error(`Erreur lors du chargement des données initiales : $error.message`))
       })
     );
   }
@@ -34,7 +31,6 @@ export class OlympicService {
   }
 
   getOlympicCountryByName(countryName : string): OlympicCountry { 
-   // BehaviorSubject using to obtain current value of OlympicCountry
     const olympicCountry = this.olympics$.getValue().find(
             (country) => country.country === countryName
           );

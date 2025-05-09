@@ -30,17 +30,14 @@ body {
   fill: #030303; /* Couleur des labels */
 }
 
-.custom-tooltip {
-  background: #0388a0d2;
-  color: white;
-  font-size: 17px;
-  padding: 10px;
-  border-radius: 15px;
-  display: block;
-  margin-bottom: 0px; 
-  margin-top: 0px; 
-  margin-left: -10px;
-  margin-right: -10px;
+.ngx-charts-tooltip-content.type-tooltip {
+  .tooltip-caret {
+    border-top-color: #0388a0d2 !important;  
+  }
+  background-color: #0388a0d2 !important;
+  color: white !important;
+  font-size: 20px !important;
+  border-radius: 15px !important; 
 }
 
 .title {

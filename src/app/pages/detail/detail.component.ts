@@ -1,4 +1,4 @@
-// Selected olympic country (in home.component) detail component
+// Selected olympic country (in home.component) detail component to display a line chart of medals won by the country in the Olympics over the years.
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LineChartData } from 'src/app/core/models/LineChartData';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
@@ -6,7 +6,6 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 import { LineChartDataService } from 'src/app/core/services/LineChartDataService';
 import { ActivatedRoute, Router} from '@angular/router';
 import { calculateTotal } from 'src/app/core/utils/Maths-utils';
-import { NotFoundComponent } from '../not-found/not-found.component';
 
 @Component({
   selector: 'app-detail',
@@ -26,7 +25,7 @@ export class DetailComponent implements OnInit {
   showRefLines: boolean = true;
   showRefLabels: boolean = true;
   showGridLines: boolean = true;  
-  animations: boolean = true;
+  animations: boolean = false;
   xAxis: boolean = true;
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
@@ -34,14 +33,14 @@ export class DetailComponent implements OnInit {
   xAxisLabel: string = 'Dates';
   yAxisLabel: string = 'Medals Count';
   timeline: boolean = false;
-  width: number =  Math.max(window.innerWidth / 2, 300); // Ajustez le diviseur selon vos besoins
-  height: number = 400; // Une hauteur fixe ou dynamique
+  width: number =  Math.max(window.innerWidth / 2, 300);
+  height: number = Math.max(window.innerHeight / 2, 500);
 
   constructor(
     private olympicService: OlympicService,
     private lineChartDataService: LineChartDataService,
     private activatedRoute: ActivatedRoute,
-    private router: Router, // Uncomment if you need to navigate to NotFoundComponent
+    private router: Router,
   ) {}
   
   ngOnInit(): void {
@@ -57,13 +56,13 @@ export class DetailComponent implements OnInit {
         throw new Error('Erreur du Line Chart Data.');
       }      
     } else {
-      throw new Error('Country parameter is missing in the route.');
-      this.router.navigate(['/not-found']);
+      this.router.navigateByUrl('not-found');
     }
   }
 
   @HostListener('window:resize')
   onResize(event: Event) {
-    this.width = Math.max(window.innerWidth / 2, 300); // Met à jour la largeur lors du redimensionnement
+    this.width = Math.max(window.innerWidth / 2, 300); // Met à jour la largeur du lineChart lors du redimensionnement
+    this.height = Math.max(window.innerHeight / 2, 500); // Met à jour la hauteur du lineChart lors du redimensionnement
   }
 }

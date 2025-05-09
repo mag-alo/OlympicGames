@@ -1,4 +1,4 @@
-// Global olympic countries data
+// Global olympic countries data component to display a pie chart of medals won by each country in the Olympics.
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     return `${texte}`;
    };
    width: number =  Math.max(window.innerWidth / 2, 300); // Ajustez le diviseur selon vos besoins
-   height: number = 300; // Une hauteur fixe ou dynamique
+   height: number = Math.max(window.innerHeight / 2, 500); // Une hauteur fixe ou dynamique
  
   constructor(
     private olympicService: OlympicService,
@@ -43,13 +43,14 @@ export class HomeComponent implements OnInit {
     });
    }
 
-  onSelect(event: any): void {
+  onSelect(event: PieChartData): void {
     this.router.navigateByUrl(`detail/${(event.name)}`);
   }
  
    @HostListener('window:resize')
    onResize(event: Event) {
     this.width = Math.max(window.innerWidth / 2, 300); // Met à jour la largeur lors du redimensionnement
+    this.height= Math.max(window.innerHeight / 2, 500);
    }
  
 }

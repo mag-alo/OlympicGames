@@ -1,4 +1,4 @@
-// PieChart Implementation responsible in transforming OlympicCountry data into a suitable format for pie chart representation. 
+// PieChart Implementation to transform OlympicCountry data into a suitable format for pie chart representation. 
 import { Injectable } from '@angular/core';
 import { PieChartData } from 'src/app/core/models/PieChartData';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
@@ -16,5 +16,4 @@ export class PieChartDataService {
         id: country.id // ID du pays
       }));
   }
-  
 }

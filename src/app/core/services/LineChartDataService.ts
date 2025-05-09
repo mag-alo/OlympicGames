@@ -1,4 +1,4 @@
-// LineChart implementation responsible for transforming OlympicCountry data into a suitable format for line chart representation.
+// LineChart implementation to transform OlympicCountry data into a suitable format for line chart representation.
 import { Injectable } from '@angular/core';
 import { LineChartData } from 'src/app/core/models/LineChartData';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
