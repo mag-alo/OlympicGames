@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
   labelFormatting = (texte: string): string => {
     return `${texte}`;
    };
-   width: number =  Math.max(window.innerWidth / 2, 300); // Ajustez le diviseur selon vos besoins
-   height: number = Math.max(window.innerHeight / 2, 500); // Une hauteur fixe ou dynamique
+   width: number =  Math.max(window.innerWidth / 2, 300);
+   height: number = Math.max(window.innerHeight / 2, 500);
  
   constructor(
     private olympicService: OlympicService,
@@ -52,8 +52,8 @@ export class HomeComponent implements OnInit {
  
    @HostListener('window:resize')
    onResize(event: Event) {
-    this.width = Math.max(window.innerWidth / 2, 300); // Met à jour la largeur lors du redimensionnement
-    this.height= Math.max(window.innerHeight / 2, 500);
+    this.width = Math.max(window.innerWidth / 2, 300); // Met à jour la largeur du lineChart lors du redimensionnement
+    this.height= Math.max(window.innerHeight / 2, 500); // Met à jour la hauteur du lineChart lors du redimensionnement
    }
 
    ngOnDestroy(): void {
