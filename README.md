@@ -8,9 +8,9 @@ The detail page describes the second data level contained in 'assets/mock/olympi
 A button on the bottom of this page allows to come back on previous one.
 
 ## Technologies
-- Angular CLI version 18.0.3.
+- Angular CLI 18.0.3
+- Bootstrap 5.3.5
 - CSS
-- Bootstrap
 
 ## Atuhors
 Magali Ducrot
