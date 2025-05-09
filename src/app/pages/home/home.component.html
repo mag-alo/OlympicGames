@@ -6,7 +6,7 @@
       <h3 class="subtitle">Number of countries<span class="number">{{ olympicCountrys.length }}</span></h3>
     </div>
   </ng-container>
-  <div class="col-md-6 col-sm-12 mt-0">
+  <div class="container-fluid">
     <ngx-charts-pie-chart class="pie-label"
       [view] = "[width, height]"
       [results]="pieChartData"        
@@ -18,11 +18,9 @@
       (select)="onSelect($event)"
       >
       <ng-template #tooltipTemplate let-model="model">
-        <div class="custom-tooltip">
-          <div>{{model.name}}</div>
-          <div>🏅{{model.value}}</div>
-        </div>
+        <div>{{model.name}}</div>
+        <div>🏅{{model.value}}</div>
       </ng-template>                
-    </ngx-charts-pie-chart>
+     </ngx-charts-pie-chart>
   </div>
 </div>

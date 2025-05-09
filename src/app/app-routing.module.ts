@@ -7,9 +7,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component'; // Im
 
 const routes: Routes = [
   {path: '',component: HomeComponent},
-  {path: '\detail',component: DetailComponent},
   {path: 'detail/:country', component: DetailComponent},
-  {path: '\notfound', component: NotFoundComponent},
+  {path: 'not-found', component: NotFoundComponent}
 ];
 
 @NgModule({
