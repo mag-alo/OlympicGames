@@ -1,6 +1,6 @@
 // Global olympic countries data component to display a pie chart of medals won by each country in the Olympics.
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject, takeUntil } from 'rxjs';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
 import { PieChartData } from 'src/app/core/models/PieChartData';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
+  private destroy$ = new Subject<void>();
+  
   public olympics$: Observable<OlympicCountry[]> = of([]);
 
   pieChartData: PieChartData[] = [];
@@ -38,7 +39,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
   
-    this.olympicService.getOlympics().subscribe((olympicCountries) => {
+    this.olympicService.getOlympics()
+    .pipe(takeUntil(this.destroy$)) // Se désabonne automatiquement lors de la destruction
+    .subscribe((olympicCountries) => {
       this.pieChartData = this.pieChartDataService.transformToPieChartData(olympicCountries);
     });
    }
@@ -52,5 +55,8 @@ export class HomeComponent implements OnInit {
     this.width = Math.max(window.innerWidth / 2, 300); // Met à jour la largeur lors du redimensionnement
     this.height= Math.max(window.innerHeight / 2, 500);
    }
- 
+
+   ngOnDestroy(): void {
+    this.destroy$.complete(); // Complète le Subject pour libérer les ressources
+  }   
 }
