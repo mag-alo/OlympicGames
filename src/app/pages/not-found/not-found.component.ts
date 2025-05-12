@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-not-found',
@@ -11,11 +11,4 @@ import { Component, OnInit } from '@angular/core';
  * It is typically displayed when a user navigates to a route that does not exist
  * within the application.
  */
-export class NotFoundComponent {
-
-  // constructor() {}
-
-  // ngOnInit(): void {
-  // }
-
-}
+export class NotFoundComponent {}

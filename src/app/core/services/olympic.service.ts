@@ -42,8 +42,7 @@ export class OlympicService {
 
   getOlympicCountryByName(countryName : string): OlympicCountry { 
     const olympicCountry = this.olympics$.getValue().find(
-            (country) => country.country === countryName
-          );
+      (country) => country.country === countryName);
 
     if (olympicCountry) {
       return olympicCountry;
