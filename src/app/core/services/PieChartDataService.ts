@@ -1,4 +1,10 @@
-// PieChart Implementation to transform OlympicCountry data into a suitable format for pie chart representation. 
+/**
+ * Service responsible for transforming Olympic country data into a format suitable for pie chart visualization.
+ * 
+ * The `PieChartDataService` provides a method to convert an array of `OlympicCountry` objects into an array of 
+ * `PieChartData` objects. Each `PieChartData` object contains the country name, total medal count, and country ID, 
+ * which can be used to render a pie chart.
+ */
 import { Injectable } from '@angular/core';
 import { PieChartData } from 'src/app/core/models/PieChartData';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';

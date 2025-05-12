@@ -1,3 +1,11 @@
+/**
+ * The `OlympicService` class is an Angular service that handles the retrieval and management
+ * of Olympic country data. It uses the HttpClient module to make HTTP requests and RxJS
+ * BehaviorSubject to manage the state of the data.
+ * 
+ * The service provides methods to load initial data, retrieve all Olympic countries, and
+ * find a specific country by its name.
+ */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, throwError } from 'rxjs';

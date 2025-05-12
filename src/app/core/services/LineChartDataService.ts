@@ -1,3 +1,7 @@
+/**
+ * Service responsible for transforming OlympicCountry data into a format
+ * suitable for line chart visualization.
+ */
 import { Injectable } from '@angular/core';
 import { LineChartData } from 'src/app/core/models/LineChartData';
 import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
@@ -5,6 +9,7 @@ import { OlympicCountry } from 'src/app/core/models/OlympicCountry';
 @Injectable({
   providedIn: 'root',
 })
+
 export class LineChartDataService {
 
   /**
