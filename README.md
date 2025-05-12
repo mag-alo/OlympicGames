@@ -20,4 +20,6 @@
 Magali Ducrot
 
 ## Run
-npm start
+1. Clone repository
+2. npm install (if npm not installed yet)
+3. npm start

@@ -1,12 +1,13 @@
 {
-  "name": "olympic-games-starter",
+  "name": "olympic-games",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "doc": "jsdoc -c jsdoc.json"
   },
   "private": true,
   "dependencies": {
@@ -33,7 +34,10 @@
     "@types/d3": "^7.4.3",
     "@types/jasmine": "~5.1.0",
     "@types/lodash": "^4.17.16",
+    "docdash": "^2.0.2",
     "jasmine-core": "~5.1.0",
+    "jsdoc": "^4.0.4",
+    "jsdoc-ts-utils": "^4.0.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",

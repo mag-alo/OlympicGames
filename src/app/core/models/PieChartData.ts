@@ -1,5 +1,5 @@
 export interface PieChartData {  
-  name: string; // Nom du pays
-  value: number; // Nombre total de médailles 
-  id: number; // ID du pays   
+  name: string;   // OlympicCountry.country
+  value: number;  // Total number of medals for all olympic games 
+  id: number;     // OlympicCountry.id 
 }

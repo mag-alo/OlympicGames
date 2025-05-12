@@ -1,0 +1,17 @@
+{
+  "source": {
+    "include": ["src"],
+    "includePattern": ".+\\.ts$",
+    "excludePattern": "(node_modules|dist|\\.spec\\.ts|test\\.ts)"
+  },
+  "plugins": ["node_modules/jsdoc-ts-utils"],
+  "opts": {
+    "destination": "./docs",
+    "recurse": true,
+    "template": "node_modules/docdash"
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  }
+}

@@ -5,11 +5,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './not-found.component.html',
   styleUrls: ['./not-found.component.scss']
 })
-export class NotFoundComponent implements OnInit {
 
-  constructor() {}
+/**
+ * The `NotFoundComponent` is a component that represents a "Not Found" page.
+ * It is typically displayed when a user navigates to a route that does not exist
+ * within the application.
+ */
+export class NotFoundComponent {
 
-  ngOnInit(): void {
-  }
+  // constructor() {}
+
+  // ngOnInit(): void {
+  // }
 
 }

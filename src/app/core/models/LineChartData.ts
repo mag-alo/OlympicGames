@@ -1,4 +1,9 @@
 export interface LineChartData {  
-  name: string,   //Nom du pays = olympicCountry.country
-  series: {name: number, value: number}[] //Année Jo {name = olympicCountry.participations.year, value = olympicCountry.participations.medalsCount}
+  // OlympicCountry.participations.year
+  name: string,
+  // OlympicCountry.participations
+  series: {
+    name: number, // OlympicCountry.participations.year
+    value: number // OlympicCountry.participations.medals
+  }[] 
 }

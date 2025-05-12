@@ -1,4 +1,3 @@
-// Olympic service implementation to get './assets/mock/olympic.json' data using Observable
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, throwError } from 'rxjs';
@@ -15,6 +14,17 @@ export class OlympicService {
  
   constructor(private http: HttpClient) {}
 
+  /**
+   * Loads the initial data for Olympic countries from the server.
+   * 
+   * This method sends an HTTP GET request to fetch an array of `OlympicCountry` objects
+   * from the specified URL. The retrieved data is then emitted to the `olympics$` subject.
+   * 
+   * In case of an error during the HTTP request, an empty array is emitted to the `olympics$`
+   * subject, and an error is thrown with a descriptive message.
+   * 
+   * @returns An observable that emits the HTTP response or an error if the request fails.
+   */
   loadInitialData() {
     return this.http.get<OlympicCountry[]>(this.olympicUrl).pipe(
       tap((value) => this.olympics$.next(value)),
