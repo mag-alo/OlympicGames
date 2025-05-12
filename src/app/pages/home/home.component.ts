@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
   
-    this.olympicService.getOlympics()
+    this.olympics$
     .pipe(takeUntil(this.destroy$))
     .subscribe((olympicCountries) => {
       this.pieChartData = this.pieChartDataService.transformToPieChartData(olympicCountries);
