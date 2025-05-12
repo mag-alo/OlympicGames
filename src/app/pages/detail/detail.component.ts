@@ -99,6 +99,7 @@ export class DetailComponent implements OnInit, OnDestroy {
    * or resources tied to it, preventing memory leaks.
    */
   ngOnDestroy(): void {
+    this.destroy$.next();
     this.destroy$.complete();
   }
 }

@@ -87,6 +87,7 @@ export class HomeComponent implements OnInit {
    * and prevent memory leaks.
    */
    ngOnDestroy(): void {
+    this.destroy$.next();    
     this.destroy$.complete();
   }   
 }
